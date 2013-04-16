@@ -34,7 +34,7 @@ GDIP_OBJS    = gdip.obj gdip_structs.obj gdip_stats.obj gdip_custom.obj
 
 AWT_PREFIX = swt-awt
 AWT_LIB    = $(AWT_PREFIX)-$(WS_PREFIX)-$(SWT_VERSION).dll
-AWT_LIBS   = "$(JAVA_HOME)\jre\bin\jawt.lib"
+AWT_LIBS   = "$(JAVA_HOME)\lib\jawt.lib"
 AWT_OBJS   = swt_awt.obj
 
 WEBKIT_DIR 	  = S:\swt-builddir\webkit\WebKit-r72896

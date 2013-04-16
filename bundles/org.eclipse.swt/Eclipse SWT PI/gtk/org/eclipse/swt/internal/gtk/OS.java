@@ -56,6 +56,9 @@ public class OS extends C {
 
 	/** Constants */
 	public static final long /*int*/ AnyPropertyType = 0;
+	public static final int APP_INDICATOR_STATUS_PASSIVE = 0;
+	public static final int APP_INDICATOR_STATUS_ACTIVE = 1;
+	public static final int APP_INDICATOR_STATUS_ATTENTION = 2;
 	public static final int ATK_RELATION_LABELLED_BY = 4;
 	public static final int G_FILE_TEST_IS_DIR = 1 << 2;
 	public static final int G_FILE_TEST_IS_EXECUTABLE = 1 << 3;
@@ -8754,6 +8757,107 @@ public static final long /*int*/ gtk_menu_new() {
 		lock.unlock();
 	}
 }
+
+/**
+ * Tries to load the libappindicator library and find the app_indicator_new symbol.
+ * @return true if succesful, false otherwise.
+ */
+public static final native boolean _app_indicator_supported();
+public static final boolean app_indicator_supported() {
+	lock.lock();
+	try {
+		return _app_indicator_supported();
+	} finally {
+		lock.unlock();
+	}
+}
+
+/**
+ * @param id cast=(const gchar *)
+ * @param icon_name cast=(const gchar *)
+ */
+public static final native long /*int*/ _app_indicator_new(byte[] id, byte[] icon_name);
+public static final long /*int*/ app_indicator_new(byte[] id, byte[] icon_name) {
+	lock.lock();
+	try {
+		return _app_indicator_new(id, icon_name);
+	} finally {
+		lock.unlock();
+	}
+}
+
+/**
+ * @param app_indicator cast=(AppIndicator *)
+ * @param status cast=(AppIndicatorStatus)
+ */
+public static final native void _app_indicator_set_status(long /*int*/ app_indicator, int status);
+public static final void app_indicator_set_status(long /*int*/ app_indicator, int status) {
+	lock.lock();
+	try {
+		_app_indicator_set_status(app_indicator, status);
+	} finally {
+		lock.unlock();
+	}
+}
+
+/**
+ * @param app_indicator cast=(AppIndicator *)
+ * @param path cast=(const gchar *)
+ */
+public static final native void _app_indicator_set_icon_theme_path(long /*int*/ app_indicator, byte[] path);
+public static final void app_indicator_set_icon_theme_path(long /*int*/ app_indicator, byte[] path) {
+	lock.lock();
+	try {
+		_app_indicator_set_icon_theme_path(app_indicator, path);
+	} finally {
+		lock.unlock();
+	}
+}
+
+/**
+ * @param app_indicator cast=(AppIndicator *)
+ * @param icon_name cast=(const gchar *)
+ * @param description cast=(const gchar *)
+ */
+public static final native void _app_indicator_set_icon_full(long /*int*/ app_indicator, byte[] icon_name, byte[] description);
+public static final void app_indicator_set_icon_full(long /*int*/ app_indicator, byte[] icon_name, byte[] description) {
+	lock.lock();
+	try {
+		_app_indicator_set_icon_full(app_indicator, icon_name, description);
+	} finally {
+		lock.unlock();
+	}
+}
+
+/**
+ * @param app_indicator cast=(AppIndicator *)
+ * @param icon_name cast=(const gchar *)
+ * @param description cast=(const gchar *)
+ */
+public static final native void _app_indicator_set_attention_icon_full(long /*int*/ app_indicator, byte[] icon_name, byte[] description);
+public static final void app_indicator_set_attention_icon_full(long /*int*/ app_indicator, byte[] icon_name, byte[] description) {
+	lock.lock();
+	try {
+		_app_indicator_set_attention_icon_full(app_indicator, icon_name, description);
+	} finally {
+		lock.unlock();
+	}
+}
+
+/**
+ * @param app_indicator cast=(AppIndicator *)
+ * @param menu cast=(GtkWidget *)
+ */
+public static final native void _app_indicator_set_menu(long /*int*/ app_indicator, long /*int*/ menu);
+public static final void app_indicator_set_menu(long /*int*/ app_indicator, long /*int*/ menu) {
+	lock.lock();
+	try {
+		_app_indicator_set_menu(app_indicator, menu);
+	} finally {
+		lock.unlock();
+	}
+}
+
 /** @param menu cast=(GtkMenu *) */
 public static final native void _gtk_menu_popdown(long /*int*/ menu);
 public static final void gtk_menu_popdown(long /*int*/ menu) {

@@ -66,6 +66,7 @@
 #define LIB_PANGOCAIRO "libpangocairo-1.0.so.0"
 #define LIB_GIO "libgio-2.0.so.0"
 #define LIB_FONTCONFIG "libfontconfig.so.1"
+#define LIB_APPINDICATOR "libappindicator.so.1"
 #endif
 
 /* Libraries for dynamic loaded functions */
@@ -78,6 +79,12 @@
 #define XRenderFreePicture_LIB LIB_XRENDER
 #define XRenderSetPictureClipRectangles_LIB LIB_XRENDER
 #define XRenderSetPictureTransform_LIB LIB_XRENDER
+#define app_indicator_new_LIB LIB_APPINDICATOR
+#define app_indicator_set_status_LIB LIB_APPINDICATOR
+#define app_indicator_set_icon_theme_path_LIB LIB_APPINDICATOR
+#define app_indicator_set_icon_full_LIB LIB_APPINDICATOR
+#define app_indicator_set_attention_icon_full_LIB LIB_APPINDICATOR
+#define app_indicator_set_menu_LIB LIB_APPINDICATOR
 #define g_filename_display_name_LIB LIB_GLIB
 #define g_thread_init_LIB LIB_GTHREAD
 #define gtk_widget_set_allocation_LIB LIB_GTK

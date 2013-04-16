@@ -16,6 +16,8 @@
 #include "swt.h"
 #include "os_structs.h"
 #include "os_stats.h"
+#include <libappindicator-0.1/libappindicator/app-indicator-enum-types.h>
+#include <libappindicator-0.1/libappindicator/app-indicator.h>
 
 #ifndef OS_NATIVE
 #define OS_NATIVE(func) Java_org_eclipse_swt_internal_gtk_OS_##func
@@ -11835,6 +11837,159 @@ JNIEXPORT jintLong JNICALL OS_NATIVE(_1gtk_1menu_1new)
 	return rc;
 }
 #endif
+
+#ifndef NO__1app_1indicator_1supported
+JNIEXPORT jboolean JNICALL OS_NATIVE(_1app_1indicator_1supported)
+	(JNIEnv *env, jclass that)
+{
+	jboolean rc = JNI_FALSE;
+	OS_NATIVE_ENTER(env, that, _1app_1indicator_1supported_FUNC);
+	{
+		OS_LOAD_FUNCTION(fp, app_indicator_new)
+		if (fp) {
+			rc = JNI_TRUE;
+		}
+	}
+	OS_NATIVE_EXIT(env, that, _1app_1indicator_1supported_FUNC);
+	return rc;
+}
+#endif
+
+#ifndef NO__1app_1indicator_1new
+JNIEXPORT jintLong JNICALL OS_NATIVE(_1app_1indicator_1new)
+	(JNIEnv *env, jclass that, jbyteArray arg0, jbyteArray arg1)
+{
+	jbyte *lparg0=NULL;
+	jbyte *lparg1=NULL;
+	jintLong rc = 0;
+	OS_NATIVE_ENTER(env, that, _1app_1indicator_1new_FUNC);
+	if (arg0) if ((lparg0 = (*env)->GetByteArrayElements(env, arg0, NULL)) == NULL) goto fail;
+	if (arg1) if ((lparg1 = (*env)->GetByteArrayElements(env, arg1, NULL)) == NULL) goto fail;
+/*
+	rc = (jintLong)app_indicator_new(arg0, arg1, APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
+*/
+	{
+		OS_LOAD_FUNCTION(fp, app_indicator_new)
+		if (fp) {
+			rc = (jintLong)((jintLong (CALLING_CONVENTION*)(const gchar *, const gchar *, AppIndicatorCategory))fp)((const gchar*)lparg0, (const gchar*)lparg1, APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
+		}
+	}
+fail:
+	if (arg1 && lparg1) (*env)->ReleaseByteArrayElements(env, arg1, lparg1, 0);
+	if (arg0 && lparg0) (*env)->ReleaseByteArrayElements(env, arg0, lparg0, 0);
+	OS_NATIVE_EXIT(env, that, _1app_1indicator_1new_FUNC);
+	return rc;
+}
+#endif
+
+#ifndef NO__1app_1indicator_1set_1status
+JNIEXPORT void JNICALL OS_NATIVE(_1app_1indicator_1set_1status)
+	(JNIEnv *env, jclass that, jintLong arg0, jint arg1)
+{
+	OS_NATIVE_ENTER(env, that, _1app_1indicator_1set_1status_FUNC);
+/*
+	app_indicator_set_status(arg0, arg1);
+*/
+	{
+		OS_LOAD_FUNCTION(fp, app_indicator_set_status)
+		if (fp) {
+			((void (CALLING_CONVENTION*)(AppIndicator*, AppIndicatorStatus))fp)((AppIndicator*)arg0, (AppIndicatorStatus)arg1);
+		}
+	}
+	OS_NATIVE_EXIT(env, that, _1app_1indicator_1set_1status_FUNC);
+}
+#endif
+
+#ifndef NO__1app_1indicator_1set_1icon_1theme_1path
+JNIEXPORT void JNICALL OS_NATIVE(_1app_1indicator_1set_1icon_1theme_1path)
+	(JNIEnv *env, jclass that, jintLong arg0, jbyteArray arg1)
+{
+	jbyte *lparg1=NULL;
+	OS_NATIVE_ENTER(env, that, _1app_1indicator_1set_1icon_1theme_1path_FUNC);
+	if (arg1) if ((lparg1 = (*env)->GetByteArrayElements(env, arg1, NULL)) == NULL) goto fail;
+/*
+	app_indicator_set_icon_theme_path(arg0, arg1);
+*/
+	{
+		OS_LOAD_FUNCTION(fp, app_indicator_set_icon_theme_path)
+		if (fp) {
+			((void (CALLING_CONVENTION*)(AppIndicator *, const gchar*))fp)((AppIndicator*)arg0, (const gchar*)lparg1);
+		}
+	}
+fail:
+	if (arg1 && lparg1) (*env)->ReleaseByteArrayElements(env, arg1, lparg1, 0);
+	OS_NATIVE_EXIT(env, that, _1app_1indicator_1set_1icon_1theme_1path_FUNC);
+}
+#endif
+
+#ifndef NO__1app_1indicator_1set_1icon_1full
+JNIEXPORT void JNICALL OS_NATIVE(_1app_1indicator_1set_1icon_1full)
+	(JNIEnv *env, jclass that, jintLong arg0, jbyteArray arg1, jbyteArray arg2)
+{
+	jbyte *lparg1=NULL;
+	jbyte *lparg2=NULL;
+	OS_NATIVE_ENTER(env, that, _1app_1indicator_1set_1icon_1full_FUNC);
+	if (arg1) if ((lparg1 = (*env)->GetByteArrayElements(env, arg1, NULL)) == NULL) goto fail;
+	if (arg2) if ((lparg2 = (*env)->GetByteArrayElements(env, arg2, NULL)) == NULL) goto fail;
+/*
+	app_indicator_set_icon_full(arg0, arg1, arg2);
+*/
+	{
+		OS_LOAD_FUNCTION(fp, app_indicator_set_icon_full)
+		if (fp) {
+			((void (CALLING_CONVENTION*)(AppIndicator*, const gchar *, const gchar *))fp)((AppIndicator*)arg0, (const gchar*)lparg1, (const gchar*)lparg2);
+		}
+	}
+fail:
+	if (arg2 && lparg2) (*env)->ReleaseByteArrayElements(env, arg2, lparg2, 0);
+	if (arg1 && lparg1) (*env)->ReleaseByteArrayElements(env, arg1, lparg1, 0);
+	OS_NATIVE_EXIT(env, that, _1app_1indicator_1set_1icon_1full_FUNC);
+}
+#endif
+
+#ifndef NO__1app_1indicator_1set_1attention_1icon_1full
+JNIEXPORT void JNICALL OS_NATIVE(_1app_1indicator_1set_1attention_1icon_1full)
+	(JNIEnv *env, jclass that, jintLong arg0, jbyteArray arg1, jbyteArray arg2)
+{
+	jbyte *lparg1=NULL;
+	jbyte *lparg2=NULL;
+	OS_NATIVE_ENTER(env, that, _1app_1indicator_1set_1attention_1icon_1full_FUNC);
+	if (arg1) if ((lparg1 = (*env)->GetByteArrayElements(env, arg1, NULL)) == NULL) goto fail;
+	if (arg2) if ((lparg2 = (*env)->GetByteArrayElements(env, arg2, NULL)) == NULL) goto fail;
+/*
+	app_indicator_set_attention_icon_full(arg0, arg1, arg2);
+*/
+	{
+		OS_LOAD_FUNCTION(fp, app_indicator_set_attention_icon_full)
+		if (fp) {
+			((void (CALLING_CONVENTION*)(AppIndicator*, const gchar *, const gchar *))fp)((AppIndicator*)arg0, (const gchar*)lparg1, (const gchar*)lparg2);
+		}
+	}
+fail:
+	if (arg2 && lparg2) (*env)->ReleaseByteArrayElements(env, arg2, lparg2, 0);
+	if (arg1 && lparg1) (*env)->ReleaseByteArrayElements(env, arg1, lparg1, 0);
+	OS_NATIVE_EXIT(env, that, _1app_1indicator_1set_1attention_1icon_1full_FUNC);
+}
+#endif
+
+#ifndef NO__1app_1indicator_1set_1menu
+JNIEXPORT void JNICALL OS_NATIVE(_1app_1indicator_1set_1menu)
+	(JNIEnv *env, jclass that, jintLong arg0, jintLong arg1)
+{
+	OS_NATIVE_ENTER(env, that, _1app_1indicator_1set_1menu_FUNC);
+/*
+	app_indicator_set_menu(arg0, arg1);
+*/
+	{
+		OS_LOAD_FUNCTION(fp, app_indicator_set_menu)
+		if (fp) {
+			((void (CALLING_CONVENTION*)(AppIndicator *, GtkMenu *))fp)((AppIndicator *)arg0, (GtkMenu *)arg1);
+		}
+	}
+	OS_NATIVE_EXIT(env, that, _1app_1indicator_1set_1menu_FUNC);
+}
+#endif
+
 
 #ifndef NO__1gtk_1menu_1popdown
 JNIEXPORT void JNICALL OS_NATIVE(_1gtk_1menu_1popdown)

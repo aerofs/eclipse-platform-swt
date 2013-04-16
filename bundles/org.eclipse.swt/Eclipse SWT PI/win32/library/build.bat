@@ -14,7 +14,7 @@
 IF EXIST C:\BUILD\swt-builddir set SWT_BUILDDIR=C:\BUILD\swt-builddir
 IF x.%SWT_BUILDDIR%==x. set SWT_BUILDDIR=S:\swt-builddir
 echo SWT build dir: %SWT_BUILDDIR%
-IF x.%MSSDK%==x. set MSSDK="%SWT_BUILDDIR%\MSSDKs\Windows Server 2003 SP1 SDK"
+IF x.%MSSDK%==x. set MSSDK="C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin"
 
 IF x.%1==x.x86 GOTO X86
 IF x.%1==x.x86_64 GOTO X86_64
@@ -22,10 +22,11 @@ IF x.%1==x.ia64 GOTO IA64
 
 :X86
 IF "x.%OUTPUT_DIR%"=="x." set OUTPUT_DIR=..\..\..\org.eclipse.swt.win32.win32.x86
-IF x.%JAVA_HOME%==x. set JAVA_HOME=%SWT_BUILDDIR%\ibm-java2-sdk-50-win-i386
+IF x.%JAVA_HOME%==x. set JAVA_HOME=C:\Program Files (x86)\Java\jdk1.6.0_25
 IF x.%BUILD_XULRUNNER%==x.true GOTO XULRUNNER
-call "%SWT_BUILDDIR%\MSVCs\Microsoft Visual Studio 8\Common7\Tools\vsvars32.bat"
-call %MSSDK%\setenv /XP32 /RETAIL
+@rem call "%SWT_BUILDDIR%\MSVCs\Microsoft Visual Studio 8\Common7\Tools\vsvars32.bat"
+call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\vcvars32.bat"
+call %MSSDK%\setenv /xp /Release /x86
 IF x.%1==x.x86 shift
 GOTO MAKE
 

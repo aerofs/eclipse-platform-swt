@@ -735,7 +735,7 @@ int
     __in LPARAM lParam);
 #endif
     
-#ifndef _DTTOPTS
+#if 0
 typedef struct _DTTOPTS
 {
     DWORD             dwSize;
