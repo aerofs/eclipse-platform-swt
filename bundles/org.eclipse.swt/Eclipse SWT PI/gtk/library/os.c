@@ -16,8 +16,8 @@
 #include "swt.h"
 #include "os_structs.h"
 #include "os_stats.h"
-#include <libappindicator-0.1/libappindicator/app-indicator-enum-types.h>
-#include <libappindicator-0.1/libappindicator/app-indicator.h>
+#include "libappindicator-0.1/libappindicator/app-indicator-enum-types.h"
+#include "libappindicator-0.1/libappindicator/app-indicator.h"
 
 #ifndef OS_NATIVE
 #define OS_NATIVE(func) Java_org_eclipse_swt_internal_gtk_OS_##func
